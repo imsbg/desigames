@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- SEO -->
+    <title>Desi Games - Play Indian Games</title>
+    <meta name="author" content="Sandeep Biswal G">
+    <meta name="description" content="Play the best Indian Desi Games online. Play Bingo, Tic Tac Toe and more with AI or friends online.">
+    <meta name="keywords" content="Desi Games, Indian Games, Play Online, Bingo, Tic Tac Toe, Chhakisuna, Odia Games, Old Indian Games, OG Indian Games">
+    <link rel="canonical" href="https://imsbg.github.io/desigames/">
+<!-- Favicon & App Icon (Brand-Mark SVG Data URI) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Crect x='8' y='8' width='50' height='50' rx='15' fill='%23141413'/%3E%3Crect x='4' y='4' width='50' height='50' rx='15' fill='%23C8F560' stroke='%23141413' stroke-width='3.5'/%3E%3Crect x='13' y='19' width='32' height='20' rx='5' fill='white' stroke='%23141413' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19 29h6M22 26v6' stroke='%23141413' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='34' cy='27' r='2' fill='%23FF6B2C'/%3E%3Ccircle cx='39' cy='31' r='2' fill='%236344F5'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Crect x='8' y='8' width='50' height='50' rx='15' fill='%23141413'/%3E%3Crect x='4' y='4' width='50' height='50' rx='15' fill='%23C8F560' stroke='%23141413' stroke-width='3.5'/%3E%3Crect x='13' y='19' width='32' height='20' rx='5' fill='white' stroke='%23141413' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19 29h6M22 26v6' stroke='%23141413' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='34' cy='27' r='2' fill='%23FF6B2C'/%3E%3Ccircle cx='39' cy='31' r='2' fill='%236344F5'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#FAF8F5">
+    <!-- Fonts: Plus Jakarta Sans (Artcraft geometric vibe) + Noto Sans Oriya -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Artcraft-inspired Tactile Palette */
+            --bg-canvas: #FAF8F5;
+            --bg-surface: #FFFFFF;
+            --bg-subtle: #F2EFE9;
+            --ink: #141413;
+            --ink-muted: #575653;
+            --ink-light: #8E8D8A;
+
+            /* Vibrant Craft Accents */
+            --accent-purple: #6344F5;
+            --accent-orange: #FF6B2C;
+            --accent-lime: #C8F560;
+            --accent-yellow: #FFD43B;
+            --accent-sky: #E0E7FF;
+
+            /* Borders & Tactile Hard Shadows */
+            --border-thin: 1.5px solid var(--ink);
+            --border-thick: 2px solid var(--ink);
+            --shadow-xs: 2px 2px 0px var(--ink);
+            --shadow-sm: 4px 4px 0px var(--ink);
+            --shadow-md: 6px 6px 0px var(--ink);
+            --shadow-lg: 8px 8px 0px var(--ink);
+
+            /* Radii */
+            --radius-pill: 999px;
+            --radius-xl: 28px;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 10px;
+
+            --transition: 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background: var(--bg-canvas);
+        }
+
+        body {
+            background-color: var(--bg-canvas);
+            /* Artcraft Studio Dot-Matrix Canvas */
+            background-image: radial-gradient(rgba(20, 20, 19, 0.11) 1.25px, transparent 1.25px);
+            background-size: 24px 24px;
+            color: var(--ink);
+            font-family: 'Plus Jakarta Sans', 'Noto Sans Oriya', system-ui, -apple-system, sans-serif;
+            line-height: 1.65;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: 140px;
+        }
+
+        button, a {
+            font: inherit;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .container {
+            width: min(100% - 36px, 1060px);
+            margin-inline: auto;
+        }
+
+        /* FLOATING ARTCRAFT NAVBAR */
+        header {
+            position: sticky;
+            top: 18px;
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 12px 18px 12px 22px;
+            margin: 18px auto 44px;
+            max-width: 1060px;
+
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: var(--border-thick);
+            border-radius: var(--radius-pill);
+            box-shadow: var(--shadow-sm);
+            animation: slideDown 0.5s ease both;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: var(--accent-lime);
+            border: var(--border-thin);
+            box-shadow: var(--shadow-xs);
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            transform: rotate(-4deg);
+            transition: var(--transition);
+        }
+
+        .brand:hover .brand-mark {
+            transform: rotate(6deg) scale(1.06);
+            background: var(--accent-yellow);
+        }
+
+        .brand h1 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px;
+            background: var(--bg-subtle);
+            border: var(--border-thin);
+            border-radius: var(--radius-pill);
+        }
+
+        .lang-btn {
+            border: 1.5px solid transparent;
+            background: transparent;
+            color: var(--ink-muted);
+            padding: 7px 18px;
+            border-radius: var(--radius-pill);
+            font-size: 0.88rem;
+            font-weight: 800;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover {
+            color: var(--ink);
+        }
+
+        .lang-btn.active {
+            background: var(--accent-lime);
+            color: var(--ink);
+            border-color: var(--ink);
+            box-shadow: 2px 2px 0px var(--ink);
+        }
+
+        /* SECTION HEADERS */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .section-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.55rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.4;
+        }
+
+        .section-pill-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 5px;
+            background: var(--accent-orange);
+            border: var(--border-thin);
+            box-shadow: 2px 2px 0px var(--ink);
+            transform: rotate(12deg);
+            flex-shrink: 0;
+        }
+
+        .section-count {
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 5px 12px;
+            background: var(--bg-surface);
+            border: var(--border-thin);
+            border-radius: var(--radius-pill);
+            box-shadow: var(--shadow-xs);
+        }
+
+        /* FEATURED BENTO HERO CARD */
+        .featured-section {
+            margin-bottom: 56px;
+            animation: fadeUp 0.55s 0.05s both;
+        }
+
+        .featured-card {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 32px;
+            padding: 42px;
+            text-decoration: none;
+            color: var(--ink);
+            background: #EDE9FE;
+            background-image: 
+                radial-gradient(circle at 90% 15%, rgba(255, 212, 59, 0.35), transparent 35%),
+                linear-gradient(135deg, #EDE9FE 0%, #E0E7FF 100%);
+            border: var(--border-thick);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        /* Decorative geometric grid pattern inside Featured */
+        .featured-card::after {
+            content: "";
+            position: absolute;
+            right: -30px;
+            bottom: -30px;
+            width: 240px;
+            height: 240px;
+            background-image: radial-gradient(var(--ink) 1.5px, transparent 1.5px);
+            background-size: 16px 16px;
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        .featured-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 11px 11px 0px var(--ink);
+        }
+
+        .featured-card:active {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px var(--ink);
+        }
+
+        .featured-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            margin-bottom: 18px;
+            background: var(--accent-yellow);
+            color: var(--ink);
+            border: var(--border-thin);
+            border-radius: var(--radius-pill);
+            box-shadow: var(--shadow-xs);
+            font-size: 0.76rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .featured-content h2 {
+            font-size: clamp(1.9rem, 4vw, 2.75rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+
+        .featured-content p {
+            max-width: 520px;
+            font-size: 1.05rem;
+            color: #363538;
+            font-weight: 500;
+            line-height: 1.75;
+            margin-bottom: 28px;
+        }
+
+        .btn-craft-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 13px 26px;
+            background: var(--accent-orange);
+            color: #FFFFFF;
+            border: var(--border-thick);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            font-size: 0.98rem;
+            font-weight: 800;
+            transition: var(--transition);
+        }
+
+        .featured-card:hover .btn-craft-primary {
+            background: var(--ink);
+            color: var(--accent-lime);
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .featured-visual {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .featured-logo-frame {
+            width: 160px;
+            height: 160px;
+            padding: 18px;
+            background: var(--bg-surface);
+            border: var(--border-thick);
+            border-radius: 30px;
+            box-shadow: var(--shadow-md);
+            transform: rotate(3deg);
+            transition: var(--transition);
+            display: grid;
+            place-items: center;
+        }
+
+        .featured-card:hover .featured-logo-frame {
+            transform: rotate(-2deg) scale(1.04);
+        }
+
+        .featured-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .floating-sticker {
+            position: absolute;
+            bottom: -10px;
+            left: -14px;
+            background: var(--accent-lime);
+            border: var(--border-thin);
+            border-radius: var(--radius-pill);
+            padding: 4px 12px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            box-shadow: var(--shadow-xs);
+            transform: rotate(-8deg);
+        }
+
+        /* BENTO GAMES GRID */
+        .games-section {
+            margin-bottom: 64px;
+            animation: fadeUp 0.55s 0.12s both;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .game-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 28px;
+            background: var(--bg-surface);
+            border: var(--border-thick);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            text-decoration: none;
+            color: var(--ink);
+            transition: var(--transition);
+        }
+
+        .game-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .game-card:active {
+            transform: translate(2px, 2px);
+            box-shadow: var(--shadow-xs);
+        }
+
+        .card-top-bar {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .card-logo-box {
+            width: 74px;
+            height: 74px;
+            padding: 11px;
+            background: var(--bg-subtle);
+            border: var(--border-thin);
+            border-radius: 18px;
+            box-shadow: var(--shadow-xs);
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .game-card:hover .card-logo-box {
+            background: var(--accent-yellow);
+            transform: rotate(-4deg);
+        }
+
+        .card-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .card-arrow-tag {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-pill);
+            border: var(--border-thin);
+            background: var(--bg-subtle);
+            display: grid;
+            place-items: center;
+            transition: var(--transition);
+        }
+
+        .game-card:hover .card-arrow-tag {
+            background: var(--accent-lime);
+            transform: rotate(45deg);
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.35;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            color: var(--ink-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.75;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .btn-card-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 18px;
+            background: var(--bg-subtle);
+            color: var(--ink);
+            border: var(--border-thin);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-xs);
+            font-size: 0.94rem;
+            font-weight: 800;
+            transition: var(--transition);
+        }
+
+        .game-card:hover .btn-card-action {
+            background: var(--accent-purple);
+            color: #FFFFFF;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* COMING SOON WORKSHOP CARD */
+        .shimmer-card {
+            background: repeating-linear-gradient(
+                -45deg,
+                #FAF8F5,
+                #FAF8F5 12px,
+                #F1EEE7 12px,
+                #F1EEE7 24px
+            );
+            border: 2px dashed #9E9C96;
+            box-shadow: none;
+            pointer-events: none;
+            justify-content: space-between;
+        }
+
+        .wip-badge {
+            display: inline-block;
+            padding: 4px 11px;
+            background: var(--bg-surface);
+            border: 1.5px solid #8E8D8A;
+            border-radius: var(--radius-pill);
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--ink-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .dummy-logo {
+            width: 74px;
+            height: 74px;
+            border-radius: 18px;
+            background: #E5E2DC;
+            border: 1.5px dashed #9E9C96;
+            display: grid;
+            place-items: center;
+            color: #787670;
+        }
+
+        /* FAQ ACCORDION - ARTCRAFT SPEC */
+        .faq-section {
+            margin-bottom: 50px;
+            animation: fadeUp 0.55s 0.18s both;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .faq-item {
+            background: var(--bg-surface);
+            border: var(--border-thick);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item.active {
+            background: #FFFDF7;
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 24px;
+            border: 0;
+            background: transparent;
+            color: var(--ink);
+            text-align: left;
+            font-size: 1.04rem;
+            font-weight: 800;
+            line-height: 1.6;
+        }
+
+        .faq-trigger-box {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: var(--bg-subtle);
+            border: var(--border-thin);
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-trigger-box {
+            background: var(--accent-lime);
+            transform: rotate(180deg);
+        }
+
+        .faq-icon {
+            width: 18px;
+            height: 18px;
+            color: var(--ink);
+        }
+
+        .faq-answer {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease;
+        }
+
+        .faq-answer-inner {
+            overflow: hidden;
+        }
+
+        .faq-item.active .faq-answer {
+            grid-template-rows: 1fr;
+        }
+
+        .faq-answer p {
+            padding: 0 24px 22px;
+            color: var(--ink-muted);
+            font-size: 0.96rem;
+            font-weight: 500;
+            line-height: 1.85;
+            border-top: 1.5px dashed rgba(20, 20, 19, 0.1);
+            padding-top: 14px;
+            margin-top: 2px;
+        }
+
+        /* FLOATING DOCK SPONSORED BANNER */
+        .sponsored-banner {
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            width: min(calc(100% - 32px), 900px);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 13px 18px;
+
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: var(--border-thick);
+            border-radius: 22px;
+            box-shadow: var(--shadow-md);
+            animation: slideUpAd 0.6s 0.35s both;
+        }
+
+        .sponsor-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .sponsor-logo-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .sponsor-logo {
+            display: block;
+            width: 54px;
+            height: 54px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: var(--border-thin);
+            background: var(--bg-subtle);
+            box-shadow: var(--shadow-xs);
+        }
+
+        .verified-badge {
+            position: absolute;
+            right: -5px;
+            bottom: -5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: var(--accent-lime);
+            border: 1.5px solid var(--ink);
+            border-radius: 50%;
+        }
+
+        .verified-badge svg {
+            width: 12px;
+            height: 12px;
+            fill: var(--ink);
+        }
+
+        .sponsor-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 0;
+        }
+
+        .sponsor-tag-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .sponsor-tag {
+            padding: 2px 8px;
+            background: var(--accent-yellow);
+            color: var(--ink);
+            border: 1px solid var(--ink);
+            border-radius: 6px;
+            font-size: 0.64rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .sponsor-title {
+            color: var(--ink);
+            font-size: 1.04rem;
+            font-weight: 800;
+            line-height: 1.35;
+        }
+
+        .sponsor-desc {
+            color: var(--ink-muted);
+            font-size: 0.84rem;
+            font-weight: 600;
+            line-height: 1.45;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .sponsor-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-shrink: 0;
+            white-space: nowrap;
+            padding: 11px 20px;
+            background: var(--ink);
+            color: var(--accent-lime);
+            border: var(--border-thin);
+            border-radius: 13px;
+            box-shadow: 3px 3px 0px var(--accent-purple);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 800;
+            transition: var(--transition);
+        }
+
+        .sponsor-btn:hover {
+            background: var(--accent-purple);
+            color: #FFFFFF;
+            box-shadow: 3px 3px 0px var(--ink);
+            transform: translate(-2px, -2px);
+        }
+
+        .sponsor-btn:active {
+            transform: translate(1px, 1px);
+        }
+
+        /* KEYFRAMES */
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUpAd {
+            from { opacity: 0; transform: translate(-50%, 35px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+
+        /* TABLET BREAKPOINT */
+        @media (max-width: 768px) {
+            .container {
+                width: min(100% - 28px, 640px);
+            }
+
+            header {
+                padding: 10px 14px;
+                margin-top: 12px;
+                margin-bottom: 34px;
+            }
+
+            .brand h1 {
+                font-size: 1.3rem;
+            }
+
+            .featured-card {
+                padding: 30px 26px;
+                gap: 22px;
+            }
+
+            .featured-logo-frame {
+                width: 130px;
+                height: 130px;
+                border-radius: 24px;
+            }
+
+            .games-grid {
+                gap: 18px;
+            }
+
+            .game-card {
+                padding: 22px;
+            }
+        }
+
+        /* MOBILE BREAKPOINT */
+        @media (max-width: 560px) {
+            .container {
+                width: calc(100% - 24px);
+            }
+
+            header {
+                top: 10px;
+                padding: 9px 12px;
+                margin-bottom: 28px;
+            }
+
+            .brand-mark {
+                width: 34px;
+                height: 34px;
+                border-radius: 10px;
+            }
+
+            .brand h1 {
+                font-size: 1.18rem;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 0.78rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .featured-card {
+                grid-template-columns: 1fr;
+                padding: 26px 22px;
+                gap: 22px;
+            }
+
+            .featured-visual {
+                order: -1;
+                justify-content: flex-start;
+            }
+
+            .featured-logo-frame {
+                width: 96px;
+                height: 96px;
+                padding: 12px;
+                border-radius: 20px;
+                transform: rotate(0deg);
+            }
+
+            .floating-sticker {
+                left: 70px;
+                bottom: -6px;
+            }
+
+            .featured-content h2 {
+                font-size: 1.65rem;
+            }
+
+            .featured-content p {
+                font-size: 0.92rem;
+                margin-bottom: 20px;
+            }
+
+            .btn-craft-primary {
+                width: 100%;
+                padding: 12px 20px;
+            }
+
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .game-card {
+                padding: 20px;
+                border-radius: 22px;
+            }
+
+            .faq-btn {
+                padding: 16px 18px;
+                font-size: 0.95rem;
+            }
+
+            .faq-answer p {
+                padding: 12px 18px 18px;
+                font-size: 0.88rem;
+            }
+
+            /* Mobile Dock Sponsored Banner */
+            .sponsored-banner {
+                width: calc(100% - 20px);
+                bottom: 10px;
+                padding: 10px 12px;
+                gap: 10px;
+                border-radius: 18px;
+            }
+
+            .sponsor-logo {
+                width: 44px;
+                height: 44px;
+                border-radius: 11px;
+            }
+
+            .sponsor-tag {
+                display: none;
+            }
+
+            .sponsor-title {
+                font-size: 0.9rem;
+            }
+
+            .sponsor-desc {
+                font-size: 0.74rem;
+                max-width: 170px;
+            }
+
+            .sponsor-btn {
+                padding: 9px 13px;
+                font-size: 0.78rem;
+                border-radius: 10px;
+            }
+
+            body {
+                padding-bottom: 110px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .sponsor-desc {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FLOATING STUDIO HEADER -->
+    <header class="container">
+        <a href="#" class="brand" aria-label="Desi Games Home">
+            <div class="brand-mark" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="6" width="20" height="12" rx="3"/>
+                    <path d="M6 12h4m-2-2v4"/>
+                    <circle cx="15" cy="11" r="1" fill="currentColor"/>
+                    <circle cx="18" cy="13" r="1" fill="currentColor"/>
+                </svg>
+            </div>
+            <h1 id="site-title">Desi Games</h1>
+        </a>
+
+        <div class="lang-switch" role="group" aria-label="Select language">
+            <button class="lang-btn" onclick="switchLanguage('en')" id="btn-en">
+                English
+            </button>
+            <button class="lang-btn" onclick="switchLanguage('odia')" id="btn-odia">
+                ଓଡ଼ିଆ
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- FEATURED GAME SHOWCASE -->
+        <section class="featured-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-pill-dot"></span>
+                    <span id="featured-heading">Featured Game</span>
+                </h2>
+                <span class="section-count">STUDIO PICK</span>
+            </div>
+
+            <div id="featured-container"></div>
+        </section>
+
+        <!-- ALL GAMES BENTO GRID -->
+        <section class="games-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-pill-dot" style="background: var(--accent-lime);"></span>
+                    <span id="all-games-heading">All Games</span>
+                </h2>
+                <span class="section-count" id="games-count-pill">2 GAMES</span>
+            </div>
+
+            <div class="games-grid" id="games-container"></div>
+        </section>
+
+        <!-- FAQ ACCORDION -->
+        <section class="faq-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-pill-dot" style="background: var(--accent-purple);"></span>
+                    <span id="faq-heading">Frequently Asked Questions</span>
+                </h2>
+            </div>
+
+            <div class="faq-list" id="faq-container"></div>
+        </section>
+
+    </main>
+
+    <!-- FLOATING SPONSORED DOCK -->
+    <div id="sponsored-container"></div>
+
+    <script>
+        // DEVICE OS DETECTION
+        function getOS() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(userAgent)) return 'Android';
+            return 'Other';
+        }
+
+        const isAndroid = getOS() === 'Android';
+
+        // GAME DATA
+        const games = [
+            {
+                id: 'bingo',
+                title: {
+                    en: 'Bingo - 1 to 25',
+                    odia: 'ବିଙ୍ଗୋ - ୧ ରୁ ୨୫'
+                },
+                desc: {
+                    en: 'Play with AI, friends in one phone or play online',
+                    odia: 'AI ସହିତ ଖେଳନ୍ତୁ, ଗୋଟିଏ ଫୋନରେ ସାଙ୍ଗମାନଙ୍କ ସହିତ କିମ୍ବା ଅନଲାଇନ୍ ଖେଳନ୍ତୁ ।'
+                },
+                link: 'https://desibingo.netlify.app/',
+                logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Crect width='32' height='32' rx='8' fill='%234F46E5'/%3E%3Crect x='5' y='5' width='9' height='9' rx='2.5' fill='%2310B981'/%3E%3Crect x='18' y='5' width='9' height='9' rx='2.5' fill='%23F43F5E'/%3E%3Crect x='5' y='18' width='9' height='9' rx='2.5' fill='%23F59E0B'/%3E%3Crect x='18' y='18' width='9' height='9' rx='2.5' fill='%2338BDF8'/%3E%3Cpath d='M5 5L27 27' stroke='white' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E",
+                featured: true
+            },
+            {
+                id: 'tictactoe',
+                title: {
+                    en: 'Tic Tac Toe',
+                    odia: 'ଛକି ଶୂନ'
+                },
+                desc: {
+                    en: 'Play with AI or online with friends',
+                    odia: 'AI ସହିତ କିମ୍ବା ସାଙ୍ଗମାନଙ୍କ ସହିତ ଅନଲାଇନ୍ ଖେଳନ୍ତୁ ।'
+                },
+                link: 'https://chhakisuna.netlify.app/',
+                logo: 'https://chhakisuna.netlify.app/favicon.svg',
+                featured: false
+            }
+        ];
+
+        // FAQ DATA
+        const faqs = [
+            {
+                q: {
+                    en: "Are there any ads in the games?",
+                    odia: "ଖେଳରେ କୌଣସି ବିଜ୍ଞାପନ ଅଛି କି?"
+                },
+                a: {
+                    en: "No! All our games are 100% ad-free. There are no video ads, pop-ups, or distractions. We want you to play peacefully!",
+                    odia: "ନା! ଆମର ସମସ୍ତ ଖେଳ ୧୦୦% ବିଜ୍ଞାପନମୁକ୍ତ । କୌଣସି ଭିଡିଓ ଆଡ୍ କିମ୍ବା ବିରକ୍ତିକର ପପ୍-ଅପ୍ ନାହିଁ । ଶାନ୍ତିରେ ଖେଳନ୍ତୁ!"
+                }
+            },
+            {
+                q: {
+                    en: "What is the sponsored app at the bottom?",
+                    odia: "ତଳେ ଥିବା ପ୍ରାୟୋଜିତ ଆପ୍ କ'ଣ?"
+                },
+                a: {
+                    en: "That is simply a banner for our very own educational app, Odia Bhasa. We placed it there to support our work without ruining your gaming experience with third-party ads.",
+                    odia: "ତାହା କେବଳ ଆମର ନିଜସ୍ୱ ଶିକ୍ଷଣୀୟ ଆପ୍, 'ଓଡ଼ିଆ ଭାଷା' ର ଏକ ବ୍ୟାନର । ଆପଣଙ୍କ ଖେଳକୁ ଖରାପ ନକରି ଆମର କାମକୁ ସମର୍ଥନ କରିବା ପାଇଁ ଆମେ ଏହା ଦେଇଛୁ ।"
+                }
+            }
+        ];
+
+        // SPONSORED APP
+        const SPONSORED_APP = {
+            appName: 'Odia Bhasa App',
+            appLogoUrl: 'https://imsbg.github.io/odiabhasa/images/app.png',
+            fallbackLogo: 'https://play-lh.googleusercontent.com/1-hBxAQsnXhn-9zQZtVl3Xh-n1H_cM4-K6y7sF-c54wQ8U5Pq6b_cW-2w0U5H3p9_w=w240-h480-rw',
+            shortDescription: {
+                en: 'Best Odia app for learning and reading',
+                odia: 'ଶିଖିବା ଓ ପଢିବାପାଇଁ ସର୍ବଶ୍ରେଷ୍ଠ ଓଡ଼ିଆ ଆପ୍ ।'
+            },
+            androidUrl: 'https://play.google.com/store/apps/details?id=in.sandeep.odiabhasa',
+            webUrl: 'https://odiabhasa.netlify.app/',
+            buttonLabelAndroid: {
+                en: 'Download Now',
+                odia: 'ଡାଉନଲୋଡ୍ କରନ୍ତୁ'
+            },
+            buttonLabelWeb: {
+                en: 'Open Now',
+                odia: 'ବର୍ତ୍ତମାନ ଖୋଲନ୍ତୁ'
+            },
+            sponsoredTag: {
+                en: 'SPONSORED',
+                odia: 'ପ୍ରାୟୋଜିତ'
+            }
+        };
+
+        // TRANSLATIONS
+        const translations = {
+            en: {
+                siteTitle: 'Desi Games',
+                featuredHeading: 'Featured Game',
+                allGamesHeading: 'All Games',
+                faqHeading: 'Frequently Asked Questions',
+                playNow: 'Play Now',
+                featuredBadge: 'Trending',
+                comingSoonTitle: 'Coming Soon',
+                comingSoonDesc: 'A new exciting game is on the way.'
+            },
+            odia: {
+                siteTitle: 'ଦେଶୀ ଗେମ୍ସ',
+                featuredHeading: 'ବିଶେଷ ଖେଳ',
+                allGamesHeading: 'ସମସ୍ତ ଖେଳ',
+                faqHeading: 'ସାଧାରଣ ପ୍ରଶ୍ନ',
+                playNow: 'ଖେଳନ୍ତୁ',
+                featuredBadge: 'ଲୋକପ୍ରିୟ',
+                comingSoonTitle: 'ଖୁବ୍ ଶୀଘ୍ର ଆସୁଛି',
+                comingSoonDesc: 'ଏକ ନୂଆ ମଜାଦାର ଖେଳ ବାଟରେ ଅଛି ।'
+            }
+        };
+
+        // LANGUAGE LOGIC
+        let currentLang = 'en';
+
+        function initLanguage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+
+            if (urlLang === 'en' || urlLang === 'odia') {
+                currentLang = urlLang;
+                try { localStorage.setItem('desi_games_lang', currentLang); } catch (e) {}
+            } else {
+                try {
+                    const savedLang = localStorage.getItem('desi_games_lang');
+                    if (savedLang === 'en' || savedLang === 'odia') {
+                        currentLang = savedLang;
+                    }
+                } catch (e) {}
+            }
+
+            applyLanguage();
+        }
+
+        function switchLanguage(lang) {
+            if (lang !== 'en' && lang !== 'odia') return;
+            currentLang = lang;
+            try { localStorage.setItem('desi_games_lang', lang); } catch (e) {}
+
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.set('lang', lang);
+            window.history.pushState({}, '', newUrl);
+
+            applyLanguage();
+        }
+
+        window.addEventListener('popstate', () => {
+            const lang = new URLSearchParams(window.location.search).get('lang');
+            if (lang === 'en' || lang === 'odia') {
+                currentLang = lang;
+            }
+            applyLanguage();
+        });
+
+        function applyLanguage() {
+            document.getElementById('btn-en').classList.toggle('active', currentLang === 'en');
+            document.getElementById('btn-odia').classList.toggle('active', currentLang === 'odia');
+
+            document.getElementById('btn-en').setAttribute('aria-pressed', currentLang === 'en');
+            document.getElementById('btn-odia').setAttribute('aria-pressed', currentLang === 'odia');
+
+            document.documentElement.lang = currentLang;
+
+            const t = translations[currentLang];
+            document.getElementById('site-title').textContent = t.siteTitle;
+            document.getElementById('featured-heading').textContent = t.featuredHeading;
+            document.getElementById('all-games-heading').textContent = t.allGamesHeading;
+            document.getElementById('faq-heading').textContent = t.faqHeading;
+            document.title = t.siteTitle + " - Play Indian Games";
+
+            renderGames();
+            renderFAQs();
+            renderSponsored();
+        }
+
+        // ICONS
+        const playIcon = `
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+        `;
+
+        const upRightArrow = `
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+        `;
+
+        const downArrow = `
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        `;
+
+        // RENDER GAMES
+        function renderGames() {
+            const featContainer = document.getElementById('featured-container');
+            const gamesContainer = document.getElementById('games-container');
+            const t = translations[currentLang];
+
+            featContainer.innerHTML = '';
+            gamesContainer.innerHTML = '';
+
+            games.forEach(game => {
+                const title = game.title[currentLang];
+                const desc = game.desc[currentLang];
+
+                // Game Grid Card
+                gamesContainer.innerHTML += `
+                    <a href="${game.link}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="game-card"
+                       aria-label="${title}">
+
+                        <div class="card-top-bar">
+                            <div class="card-logo-box">
+                                <img
+                                    src="${game.logo}"
+                                    alt="${title}"
+                                    class="card-logo"
+                                    onerror="this.style.display='none'"
+                                >
+                            </div>
+                            <span class="card-arrow-tag" aria-hidden="true">
+                                ${upRightArrow}
+                            </span>
+                        </div>
+
+                        <h3 class="card-title">${title}</h3>
+                        <p class="card-desc">${desc}</p>
+
+                        <div class="btn-card-action">
+                            ${playIcon}
+                            <span>${t.playNow}</span>
+                        </div>
+                    </a>
+                `;
+
+                // Featured Showcase Card
+                if (game.featured) {
+                    featContainer.innerHTML = `
+                        <a href="${game.link}"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="featured-card">
+
+                            <div class="featured-content">
+                                <span class="featured-badge">
+                                    ★ ${t.featuredBadge}
+                                </span>
+
+                                <h2>${title}</h2>
+                                <p>${desc}</p>
+
+                                <div class="btn-craft-primary">
+                                    ${playIcon}
+                                    <span>${t.playNow}</span>
+                                </div>
+                            </div>
+
+                            <div class="featured-visual">
+                                <div class="featured-logo-frame">
+                                    <img
+                                        src="${game.logo}"
+                                        alt="${title}"
+                                        class="featured-logo"
+                                        onerror="this.style.display='none'"
+                                    >
+                                </div>
+                                <span class="floating-sticker">100% FREE</span>
+                            </div>
+                        </a>
+                    `;
+                }
+            });
+
+            // Coming Soon Studio Card
+            gamesContainer.innerHTML += `
+                <div class="game-card shimmer-card" aria-hidden="true">
+                    <div>
+                        <div class="card-top-bar">
+                            <div class="dummy-logo">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                </svg>
+                            </div>
+                            <span class="wip-badge">IN LABS</span>
+                        </div>
+
+                        <h3 class="card-title" style="color: var(--ink-muted);">
+                            ${t.comingSoonTitle}
+                        </h3>
+                        <p class="card-desc">
+                            ${t.comingSoonDesc}
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // RENDER FAQ
+        function renderFAQs() {
+            const container = document.getElementById('faq-container');
+            container.innerHTML = '';
+
+            faqs.forEach((faq, index) => {
+                const buttonId = `faq-button-${index}`;
+                const answerId = `faq-answer-${index}`;
+
+                container.innerHTML += `
+                    <div class="faq-item">
+                        <button
+                            class="faq-btn"
+                            id="${buttonId}"
+                            aria-expanded="false"
+                            aria-controls="${answerId}"
+                            onclick="toggleFaq(this)"
+                        >
+                            <span>${faq.q[currentLang]}</span>
+                            <span class="faq-trigger-box">
+                                ${downArrow}
+                            </span>
+                        </button>
+
+                        <div
+                            class="faq-answer"
+                            id="${answerId}"
+                            role="region"
+                            aria-labelledby="${buttonId}"
+                        >
+                            <div class="faq-answer-inner">
+                                <p>${faq.a[currentLang]}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // FAQ TOGGLE
+        window.toggleFaq = function(btn) {
+            const item = btn.parentElement;
+            const isActive = item.classList.contains('active');
+
+            document.querySelectorAll('.faq-item').forEach(el => {
+                el.classList.remove('active');
+                el.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        };
+
+        // RENDER SPONSORED APP
+        function renderSponsored() {
+            const container = document.getElementById('sponsored-container');
+
+            const finalUrl = isAndroid ? SPONSORED_APP.androidUrl : SPONSORED_APP.webUrl;
+            const finalBtnLabel = isAndroid
+                ? SPONSORED_APP.buttonLabelAndroid[currentLang]
+                : SPONSORED_APP.buttonLabelWeb[currentLang];
+
+            const icon = isAndroid
+                ? `
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                `
+                : `
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                `;
+
+            container.innerHTML = `
+                <div class="sponsored-banner">
+                    <div class="sponsor-left">
+                        <div class="sponsor-logo-wrap">
+                            <img
+                                src="${SPONSORED_APP.appLogoUrl}"
+                                alt="App"
+                                class="sponsor-logo"
+                                onerror="this.onerror=null;this.src='${SPONSORED_APP.fallbackLogo}'"
+                            >
+                            <div class="verified-badge">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-details">
+                            <div class="sponsor-tag-wrap">
+                                <span class="sponsor-tag">
+                                    ${SPONSORED_APP.sponsoredTag[currentLang]}
+                                </span>
+                                <span class="sponsor-title">
+                                    ${SPONSORED_APP.appName}
+                                </span>
+                            </div>
+
+                            <span class="sponsor-desc">
+                                ${SPONSORED_APP.shortDescription[currentLang]}
+                            </span>
+                        </div>
+                    </div>
+
+                    <a
+                        href="${finalUrl}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="sponsor-btn"
+                    >
+                        ${icon}
+                        <span>${finalBtnLabel}</span>
+                    </a>
+                </div>
+            `;
+        }
+
+        // INITIALIZE
+        window.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+
+</body>
+</html>
