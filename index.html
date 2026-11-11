@@ -8,13 +8,15 @@
     <title>Desi Games - Play Indian Games</title>
     <meta name="author" content="Sandeep Biswal G">
     <meta name="description" content="Play the best Indian Desi Games online. Play Bingo, Tic Tac Toe and more with AI or friends online.">
-    <meta name="keywords" content="Desi Games, Indian Games, Play Online, Bingo, Tic Tac Toe, Chhakisuna, Odia Games, Old Indian Games, OG Indian Games">
+    <meta name="keywords" content="Desi Games, Indian Games, Play Online, Bingo, Tic Tac Toe, Chhakisuna, Indian Games Online, Free Games, Play with Friends, Play with AI, Desi Games Online, Indian Games Free, Desi Games Free, Play Desi Games, Play Indian Games, Odia Games">
     <link rel="canonical" href="https://imsbg.github.io/desigames/">
-<!-- Favicon & App Icon (Brand-Mark SVG Data URI) -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Crect x='8' y='8' width='50' height='50' rx='15' fill='%23141413'/%3E%3Crect x='4' y='4' width='50' height='50' rx='15' fill='%23C8F560' stroke='%23141413' stroke-width='3.5'/%3E%3Crect x='13' y='19' width='32' height='20' rx='5' fill='white' stroke='%23141413' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19 29h6M22 26v6' stroke='%23141413' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='34' cy='27' r='2' fill='%23FF6B2C'/%3E%3Ccircle cx='39' cy='31' r='2' fill='%236344F5'/%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Crect x='8' y='8' width='50' height='50' rx='15' fill='%23141413'/%3E%3Crect x='4' y='4' width='50' height='50' rx='15' fill='%23C8F560' stroke='%23141413' stroke-width='3.5'/%3E%3Crect x='13' y='19' width='32' height='20' rx='5' fill='white' stroke='%23141413' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19 29h6M22 26v6' stroke='%23141413' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='34' cy='27' r='2' fill='%23FF6B2C'/%3E%3Ccircle cx='39' cy='31' r='2' fill='%236344F5'/%3E%3C/svg%3E">
-<meta name="theme-color" content="#FAF8F5">
-    <!-- Fonts: Plus Jakarta Sans (Artcraft geometric vibe) + Noto Sans Oriya -->
+
+    <!-- Favicon & App Icon (Brand-Mark SVG Data URI) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Crect x='8' y='8' width='50' height='50' rx='15' fill='%23141413'/%3E%3Crect x='4' y='4' width='50' height='50' rx='15' fill='%23C8F560' stroke='%23141413' stroke-width='3.5'/%3E%3Crect x='13' y='19' width='32' height='20' rx='5' fill='white' stroke='%23141413' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19 29h6M22 26v6' stroke='%23141413' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='34' cy='27' r='2' fill='%23FF6B2C'/%3E%3Ccircle cx='39' cy='31' r='2' fill='%236344F5'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Crect x='8' y='8' width='50' height='50' rx='15' fill='%23141413'/%3E%3Crect x='4' y='4' width='50' height='50' rx='15' fill='%23C8F560' stroke='%23141413' stroke-width='3.5'/%3E%3Crect x='13' y='19' width='32' height='20' rx='5' fill='white' stroke='%23141413' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19 29h6M22 26v6' stroke='%23141413' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='34' cy='27' r='2' fill='%23FF6B2C'/%3E%3Ccircle cx='39' cy='31' r='2' fill='%236344F5'/%3E%3C/svg%3E">
+    <meta name="theme-color" content="#FAF8F5">
+
+    <!-- Fonts: Plus Jakarta Sans + Noto Sans Oriya -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -68,7 +70,6 @@
 
         body {
             background-color: var(--bg-canvas);
-            /* Artcraft Studio Dot-Matrix Canvas */
             background-image: radial-gradient(rgba(20, 20, 19, 0.11) 1.25px, transparent 1.25px);
             background-size: 24px 24px;
             color: var(--ink);
@@ -249,7 +250,6 @@
             transition: var(--transition);
         }
 
-        /* Decorative geometric grid pattern inside Featured */
         .featured-card::after {
             content: "";
             position: absolute;
@@ -634,8 +634,8 @@
             margin-top: 2px;
         }
 
-        /* FLOATING DOCK SPONSORED BANNER */
-        .sponsored-banner {
+        /* FLOATING STUDIO DOCK BAR (AD-BLOCKER SAFE NAMING) */
+        .studio-dock-bar {
             position: fixed;
             z-index: 1000;
             left: 50%;
@@ -655,22 +655,22 @@
             border: var(--border-thick);
             border-radius: 22px;
             box-shadow: var(--shadow-md);
-            animation: slideUpAd 0.6s 0.35s both;
+            animation: slideUpDock 0.6s 0.35s both;
         }
 
-        .sponsor-left {
+        .dock-info-group {
             display: flex;
             align-items: center;
             gap: 14px;
             min-width: 0;
         }
 
-        .sponsor-logo-wrap {
+        .dock-icon-wrap {
             position: relative;
             flex-shrink: 0;
         }
 
-        .sponsor-logo {
+        .dock-app-icon {
             display: block;
             width: 54px;
             height: 54px;
@@ -701,21 +701,21 @@
             fill: var(--ink);
         }
 
-        .sponsor-details {
+        .dock-text-meta {
             display: flex;
             flex-direction: column;
             gap: 2px;
             min-width: 0;
         }
 
-        .sponsor-tag-wrap {
+        .dock-badge-row {
             display: flex;
             align-items: center;
             gap: 8px;
             flex-wrap: wrap;
         }
 
-        .sponsor-tag {
+        .dock-pill-tag {
             padding: 2px 8px;
             background: var(--accent-yellow);
             color: var(--ink);
@@ -726,14 +726,14 @@
             letter-spacing: 0.04em;
         }
 
-        .sponsor-title {
+        .dock-app-heading {
             color: var(--ink);
             font-size: 1.04rem;
             font-weight: 800;
             line-height: 1.35;
         }
 
-        .sponsor-desc {
+        .dock-app-subtext {
             color: var(--ink-muted);
             font-size: 0.84rem;
             font-weight: 600;
@@ -743,7 +743,7 @@
             text-overflow: ellipsis;
         }
 
-        .sponsor-btn {
+        .dock-cta-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -762,14 +762,14 @@
             transition: var(--transition);
         }
 
-        .sponsor-btn:hover {
+        .dock-cta-button:hover {
             background: var(--accent-purple);
             color: #FFFFFF;
             box-shadow: 3px 3px 0px var(--ink);
             transform: translate(-2px, -2px);
         }
 
-        .sponsor-btn:active {
+        .dock-cta-button:active {
             transform: translate(1px, 1px);
         }
 
@@ -784,7 +784,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes slideUpAd {
+        @keyframes slideUpDock {
             from { opacity: 0; transform: translate(-50%, 35px); }
             to { opacity: 1; transform: translate(-50%, 0); }
         }
@@ -914,8 +914,8 @@
                 font-size: 0.88rem;
             }
 
-            /* Mobile Dock Sponsored Banner */
-            .sponsored-banner {
+            /* Mobile Dock Bar */
+            .studio-dock-bar {
                 width: calc(100% - 20px);
                 bottom: 10px;
                 padding: 10px 12px;
@@ -923,26 +923,26 @@
                 border-radius: 18px;
             }
 
-            .sponsor-logo {
+            .dock-app-icon {
                 width: 44px;
                 height: 44px;
                 border-radius: 11px;
             }
 
-            .sponsor-tag {
+            .dock-pill-tag {
                 display: none;
             }
 
-            .sponsor-title {
+            .dock-app-heading {
                 font-size: 0.9rem;
             }
 
-            .sponsor-desc {
+            .dock-app-subtext {
                 font-size: 0.74rem;
                 max-width: 170px;
             }
 
-            .sponsor-btn {
+            .dock-cta-button {
                 padding: 9px 13px;
                 font-size: 0.78rem;
                 border-radius: 10px;
@@ -954,7 +954,7 @@
         }
 
         @media (max-width: 360px) {
-            .sponsor-desc {
+            .dock-app-subtext {
                 display: none;
             }
         }
@@ -1036,8 +1036,8 @@
 
     </main>
 
-    <!-- FLOATING SPONSORED DOCK -->
-    <div id="sponsored-container"></div>
+    <!-- FLOATING STUDIO DOCK (Ad-block safe ID) -->
+    <div id="studio-dock-root"></div>
 
     <script>
         // DEVICE OS DETECTION
@@ -1105,8 +1105,8 @@
             }
         ];
 
-        // SPONSORED APP
-        const SPONSORED_APP = {
+        // OUR STUDIO APP DATA
+        const STUDIO_DOCK_APP = {
             appName: 'Odia Bhasa App',
             appLogoUrl: 'https://imsbg.github.io/odiabhasa/images/app.png',
             fallbackLogo: 'https://play-lh.googleusercontent.com/1-hBxAQsnXhn-9zQZtVl3Xh-n1H_cM4-K6y7sF-c54wQ8U5Pq6b_cW-2w0U5H3p9_w=w240-h480-rw',
@@ -1124,7 +1124,7 @@
                 en: 'Open Now',
                 odia: 'ବର୍ତ୍ତମାନ ଖୋଲନ୍ତୁ'
             },
-            sponsoredTag: {
+            badgeTag: {
                 en: 'SPONSORED',
                 odia: 'ପ୍ରାୟୋଜିତ'
             }
@@ -1214,7 +1214,7 @@
 
             renderGames();
             renderFAQs();
-            renderSponsored();
+            renderStudioDock();
         }
 
         // ICONS
@@ -1250,7 +1250,6 @@
                 const title = game.title[currentLang];
                 const desc = game.desc[currentLang];
 
-                // Game Grid Card
                 gamesContainer.innerHTML += `
                     <a href="${game.link}"
                        target="_blank"
@@ -1282,7 +1281,6 @@
                     </a>
                 `;
 
-                // Featured Showcase Card
                 if (game.featured) {
                     featContainer.innerHTML = `
                         <a href="${game.link}"
@@ -1320,7 +1318,6 @@
                 }
             });
 
-            // Coming Soon Studio Card
             gamesContainer.innerHTML += `
                 <div class="game-card shimmer-card" aria-hidden="true">
                     <div>
@@ -1399,14 +1396,14 @@
             }
         };
 
-        // RENDER SPONSORED APP
-        function renderSponsored() {
-            const container = document.getElementById('sponsored-container');
+        // RENDER STUDIO DOCK (Ad-Blocker Proof)
+        function renderStudioDock() {
+            const container = document.getElementById('studio-dock-root');
 
-            const finalUrl = isAndroid ? SPONSORED_APP.androidUrl : SPONSORED_APP.webUrl;
+            const finalUrl = isAndroid ? STUDIO_DOCK_APP.androidUrl : STUDIO_DOCK_APP.webUrl;
             const finalBtnLabel = isAndroid
-                ? SPONSORED_APP.buttonLabelAndroid[currentLang]
-                : SPONSORED_APP.buttonLabelWeb[currentLang];
+                ? STUDIO_DOCK_APP.buttonLabelAndroid[currentLang]
+                : STUDIO_DOCK_APP.buttonLabelWeb[currentLang];
 
             const icon = isAndroid
                 ? `
@@ -1425,14 +1422,14 @@
                 `;
 
             container.innerHTML = `
-                <div class="sponsored-banner">
-                    <div class="sponsor-left">
-                        <div class="sponsor-logo-wrap">
+                <div class="studio-dock-bar">
+                    <div class="dock-info-group">
+                        <div class="dock-icon-wrap">
                             <img
-                                src="${SPONSORED_APP.appLogoUrl}"
-                                alt="App"
-                                class="sponsor-logo"
-                                onerror="this.onerror=null;this.src='${SPONSORED_APP.fallbackLogo}'"
+                                src="${STUDIO_DOCK_APP.appLogoUrl}"
+                                alt="Odia Bhasa"
+                                class="dock-app-icon"
+                                onerror="this.onerror=null;this.src='${STUDIO_DOCK_APP.fallbackLogo}'"
                             >
                             <div class="verified-badge">
                                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -1441,18 +1438,18 @@
                             </div>
                         </div>
 
-                        <div class="sponsor-details">
-                            <div class="sponsor-tag-wrap">
-                                <span class="sponsor-tag">
-                                    ${SPONSORED_APP.sponsoredTag[currentLang]}
+                        <div class="dock-text-meta">
+                            <div class="dock-badge-row">
+                                <span class="dock-pill-tag">
+                                    ${STUDIO_DOCK_APP.badgeTag[currentLang]}
                                 </span>
-                                <span class="sponsor-title">
-                                    ${SPONSORED_APP.appName}
+                                <span class="dock-app-heading">
+                                    ${STUDIO_DOCK_APP.appName}
                                 </span>
                             </div>
 
-                            <span class="sponsor-desc">
-                                ${SPONSORED_APP.shortDescription[currentLang]}
+                            <span class="dock-app-subtext">
+                                ${STUDIO_DOCK_APP.shortDescription[currentLang]}
                             </span>
                         </div>
                     </div>
@@ -1461,7 +1458,7 @@
                         href="${finalUrl}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="sponsor-btn"
+                        class="dock-cta-button"
                     >
                         ${icon}
                         <span>${finalBtnLabel}</span>
