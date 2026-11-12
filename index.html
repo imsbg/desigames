@@ -7,8 +7,8 @@
     <!-- SEO -->
     <title>Desi Games - Play Indian Games</title>
     <meta name="author" content="Sandeep Biswal G">
-    <meta name="description" content="Play the best Indian Desi Games online. Play Bingo, Tic Tac Toe and more with AI or friends online.">
-    <meta name="keywords" content="Desi Games, Indian Games, Play Online, Bingo, Tic Tac Toe, Chhakisuna, Indian Games Online, Free Games, Play with Friends, Play with AI, Desi Games Online, Indian Games Free, Desi Games Free, Play Desi Games, Play Indian Games, Odia Games">
+    <meta name="description" content="Play the best Indian Desi Games online. Play Bagha Chheli (Tiger and Goat), Bingo, Tic Tac Toe and more with AI or friends online.">
+    <meta name="keywords" content="Desi Games, Indian Games, Play Online, Bagha Chheli, Tiger and Goat, Bingo, Tic Tac Toe, Chhakisuna, Indian Games Online, Free Games, Play with Friends, Play with AI, Desi Games Online, Indian Games Free, Desi Games Free, Play Desi Games, Play Indian Games, Odia Games">
     <link rel="canonical" href="https://imsbg.github.io/desigames/">
 
     <!-- Favicon & App Icon (Brand-Mark SVG Data URI) -->
@@ -1016,7 +1016,7 @@
                     <span class="section-pill-dot" style="background: var(--accent-lime);"></span>
                     <span id="all-games-heading">All Games</span>
                 </h2>
-                <span class="section-count" id="games-count-pill">2 GAMES</span>
+                <span class="section-count" id="games-count-pill">3 GAMES</span>
             </div>
 
             <div class="games-grid" id="games-container"></div>
@@ -1049,37 +1049,93 @@
 
         const isAndroid = getOS() === 'Android';
 
-        // GAME DATA
-        const games = [
-            {
-                id: 'bingo',
-                title: {
-                    en: 'Bingo - 1 to 25',
-                    odia: 'ବିଙ୍ଗୋ - ୧ ରୁ ୨୫'
-                },
-                desc: {
-                    en: 'Play with AI, friends in one phone or play online',
-                    odia: 'AI ସହିତ ଖେଳନ୍ତୁ, ଗୋଟିଏ ଫୋନରେ ସାଙ୍ଗମାନଙ୍କ ସହିତ କିମ୍ବା ଅନଲାଇନ୍ ଖେଳନ୍ତୁ ।'
-                },
-                link: 'https://desibingo.netlify.app/',
-                logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Crect width='32' height='32' rx='8' fill='%234F46E5'/%3E%3Crect x='5' y='5' width='9' height='9' rx='2.5' fill='%2310B981'/%3E%3Crect x='18' y='5' width='9' height='9' rx='2.5' fill='%23F43F5E'/%3E%3Crect x='5' y='18' width='9' height='9' rx='2.5' fill='%23F59E0B'/%3E%3Crect x='18' y='18' width='9' height='9' rx='2.5' fill='%2338BDF8'/%3E%3Cpath d='M5 5L27 27' stroke='white' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E",
-                featured: true
-            },
-            {
-                id: 'tictactoe',
-                title: {
-                    en: 'Tic Tac Toe',
-                    odia: 'ଛକି ଶୂନ'
-                },
-                desc: {
-                    en: 'Play with AI or online with friends',
-                    odia: 'AI ସହିତ କିମ୍ବା ସାଙ୍ଗମାନଙ୍କ ସହିତ ଅନଲାଇନ୍ ଖେଳନ୍ତୁ ।'
-                },
-                link: 'https://chhakisuna.netlify.app/',
-                logo: 'https://chhakisuna.netlify.app/favicon.svg',
-                featured: false
+        // ============================================================================
+        // GAME MANAGEMENT SYSTEM (Add games & mark featured easily)
+        // ============================================================================
+        const games = [];
+
+        /**
+         * Add a new game to the catalog.
+         * If `featured: true` is passed, it automatically un-features previous games.
+         */
+        function addGame({ id, titleEn, titleOdia, descEn, descOdia, link, logo, featured = false }) {
+            if (featured) {
+                games.forEach(g => g.featured = false);
             }
-        ];
+            games.push({
+                id,
+                title: {
+                    en: titleEn,
+                    odia: titleOdia
+                },
+                desc: {
+                    en: descEn,
+                    odia: descOdia
+                },
+                link,
+                logo,
+                featured
+            });
+        }
+
+        /**
+         * Change the featured / trending game anytime by its ID.
+         * Example: setFeaturedGame('bingo');
+         */
+        function setFeaturedGame(gameId) {
+            let found = false;
+            games.forEach(game => {
+                if (game.id === gameId) {
+                    game.featured = true;
+                    found = true;
+                } else {
+                    game.featured = false;
+                }
+            });
+            if (found && typeof renderGames === 'function') {
+                renderGames();
+            }
+        }
+
+        // ============================================================================
+        // ADD GAMES HERE
+        // ============================================================================
+
+        // 1. Tiger and Goat (Bagha Chheli) - Marked as Featured / Trending Now
+        addGame({
+            id: 'baghachheli',
+            titleEn: 'Tiger and Goat (Bagha Chheli)',
+            titleOdia: 'ବାଘ ଛେଳି',
+            descEn: 'Play with AI, friends in one phone or play online',
+            descOdia: 'AI ସହିତ ଖେଳନ୍ତୁ, ଗୋଟିଏ ଫୋନରେ ସାଙ୍ଗମାନଙ୍କ ସହିତ କିମ୍ବା ଅନଲାଇନ୍ ଖେଳନ୍ତୁ ।',
+            link: 'https://baghachheli.netlify.app/',
+            logo: 'https://imsbg.github.io/bagha-chheli/logo.svg',
+            featured: true
+        });
+
+        // 2. Bingo - 1 to 25
+        addGame({
+            id: 'bingo',
+            titleEn: 'Bingo - 1 to 25',
+            titleOdia: 'ବିଙ୍ଗୋ - ୧ ରୁ ୨୫',
+            descEn: 'Play with AI, friends in one phone or play online',
+            descOdia: 'AI ସହିତ ଖେଳନ୍ତୁ, ଗୋଟିଏ ଫୋନରେ ସାଙ୍ଗମାନଙ୍କ ସହିତ କିମ୍ବା ଅନଲାଇନ୍ ଖେଳନ୍ତୁ ।',
+            link: 'https://desibingo.netlify.app/',
+            logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Crect width='32' height='32' rx='8' fill='%234F46E5'/%3E%3Crect x='5' y='5' width='9' height='9' rx='2.5' fill='%2310B981'/%3E%3Crect x='18' y='5' width='9' height='9' rx='2.5' fill='%23F43F5E'/%3E%3Crect x='5' y='18' width='9' height='9' rx='2.5' fill='%23F59E0B'/%3E%3Crect x='18' y='18' width='9' height='9' rx='2.5' fill='%2338BDF8'/%3E%3Cpath d='M5 5L27 27' stroke='white' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E",
+            featured: false
+        });
+
+        // 3. Tic Tac Toe (Chhaki Suna)
+        addGame({
+            id: 'tictactoe',
+            titleEn: 'Tic Tac Toe',
+            titleOdia: 'ଛକି ଶୂନ',
+            descEn: 'Play with AI or online with friends',
+            descOdia: 'AI ସହିତ କିମ୍ବା ସାଙ୍ଗମାନଙ୍କ ସହିତ ଅନଲାଇନ୍ ଖେଳନ୍ତୁ ।',
+            link: 'https://chhakisuna.netlify.app/',
+            logo: 'https://chhakisuna.netlify.app/favicon.svg',
+            featured: false
+        });
 
         // FAQ DATA
         const faqs = [
@@ -1140,7 +1196,8 @@
                 playNow: 'Play Now',
                 featuredBadge: 'Trending',
                 comingSoonTitle: 'Coming Soon',
-                comingSoonDesc: 'A new exciting game is on the way.'
+                comingSoonDesc: 'A new exciting game is on the way.',
+                gamesCountSuffix: 'GAMES'
             },
             odia: {
                 siteTitle: 'ଦେଶୀ ଗେମ୍ସ',
@@ -1150,7 +1207,8 @@
                 playNow: 'ଖେଳନ୍ତୁ',
                 featuredBadge: 'ଲୋକପ୍ରିୟ',
                 comingSoonTitle: 'ଖୁବ୍ ଶୀଘ୍ର ଆସୁଛି',
-                comingSoonDesc: 'ଏକ ନୂଆ ମଜାଦାର ଖେଳ ବାଟରେ ଅଛି ।'
+                comingSoonDesc: 'ଏକ ନୂଆ ମଜାଦାର ଖେଳ ବାଟରେ ଅଛି ।',
+                gamesCountSuffix: 'ଟି ଖେଳ'
             }
         };
 
@@ -1237,14 +1295,30 @@
             </svg>
         `;
 
+        // Helper to convert numbers to Odia numerals if Odia is active
+        function formatCount(num, lang) {
+            if (lang !== 'odia') return num;
+            const odiaDigits = ['୦', '୧', '୨', '୩', '୪', '୫', '୬', '୭', '୮', '୯'];
+            return String(num).split('').map(d => odiaDigits[d] || d).join('');
+        }
+
         // RENDER GAMES
         function renderGames() {
             const featContainer = document.getElementById('featured-container');
             const gamesContainer = document.getElementById('games-container');
+            const countPill = document.getElementById('games-count-pill');
             const t = translations[currentLang];
 
             featContainer.innerHTML = '';
             gamesContainer.innerHTML = '';
+
+            // Dynamically update game counter pill
+            if (countPill) {
+                countPill.textContent = `${formatCount(games.length, currentLang)} ${t.gamesCountSuffix}`;
+            }
+
+            // Fallback: if no game is marked featured, feature the first one
+            const featuredGame = games.find(g => g.featured) || games[0];
 
             games.forEach(game => {
                 const title = game.title[currentLang];
@@ -1280,43 +1354,46 @@
                         </div>
                     </a>
                 `;
-
-                if (game.featured) {
-                    featContainer.innerHTML = `
-                        <a href="${game.link}"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="featured-card">
-
-                            <div class="featured-content">
-                                <span class="featured-badge">
-                                    ★ ${t.featuredBadge}
-                                </span>
-
-                                <h2>${title}</h2>
-                                <p>${desc}</p>
-
-                                <div class="btn-craft-primary">
-                                    ${playIcon}
-                                    <span>${t.playNow}</span>
-                                </div>
-                            </div>
-
-                            <div class="featured-visual">
-                                <div class="featured-logo-frame">
-                                    <img
-                                        src="${game.logo}"
-                                        alt="${title}"
-                                        class="featured-logo"
-                                        onerror="this.style.display='none'"
-                                    >
-                                </div>
-                                <span class="floating-sticker">100% FREE</span>
-                            </div>
-                        </a>
-                    `;
-                }
             });
+
+            if (featuredGame) {
+                const fTitle = featuredGame.title[currentLang];
+                const fDesc = featuredGame.desc[currentLang];
+
+                featContainer.innerHTML = `
+                    <a href="${featuredGame.link}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="featured-card">
+
+                        <div class="featured-content">
+                            <span class="featured-badge">
+                                ★ ${t.featuredBadge}
+                            </span>
+
+                            <h2>${fTitle}</h2>
+                            <p>${fDesc}</p>
+
+                            <div class="btn-craft-primary">
+                                ${playIcon}
+                                <span>${t.playNow}</span>
+                            </div>
+                        </div>
+
+                        <div class="featured-visual">
+                            <div class="featured-logo-frame">
+                                <img
+                                    src="${featuredGame.logo}"
+                                    alt="${fTitle}"
+                                    class="featured-logo"
+                                    onerror="this.style.display='none'"
+                                >
+                            </div>
+                            <span class="floating-sticker">100% FREE</span>
+                        </div>
+                    </a>
+                `;
+            }
 
             gamesContainer.innerHTML += `
                 <div class="game-card shimmer-card" aria-hidden="true">
